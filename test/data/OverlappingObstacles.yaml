@@ -1,0 +1,11 @@
+# input_with_overlapping_boundaries.yaml
+x_start: 2
+y_start: 2
+x_goal: 98
+y_goal: 98
+x_space_size: 100
+y_space_size: 100
+list_obstacles: [
+  [[25,25], [75,25], [75,50], [25, 50]],
+  [[35,35], [85,35], [85,60], [35, 60]],
+]

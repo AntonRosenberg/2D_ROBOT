@@ -7,13 +7,15 @@ import yaml
 import argparse
 from RobotMap import RobotMap
 from graph import Graph
-from AStar import a_star_dist
+from KinematicModel import KinematicsModel
+from AStar import a_star_dist, a_star_kinematic
 
 def main():
     parser = argparse.ArgumentParser(prog='shortestPathFinding', description='Find the Shortest Path that avoids obstacles')
     parser.add_argument('inputyaml')
     parser.add_argument('output', nargs='?', default='solution.txt')
     parser.add_argument('--plot', action='store_true')
+    parser.add_argument('-type', nargs='?', default='shortest_path')
     args = parser.parse_args()
     # Load input
     indata = yaml.load(open(args.inputyaml), yaml.Loader)
@@ -28,7 +30,12 @@ def main():
     # the verticies in the graph.
     graph = Graph(robotMap)
     # Run A-star algorithm to find shortest path
-    path = a_star_dist(graph.graph, start, goal)
+    if args.type == 'shortest_path':
+        path = a_star_dist(graph.graph, start, goal)
+    elif args.type == 'kinematic':
+        kinematics_model = KinematicsModel(1)
+        path = a_star_kinematic(graph.graph, start, goal, kinematics_model)
+
     if not path:
         raise Exception("No valid path from start to goal found")
     print(path)
