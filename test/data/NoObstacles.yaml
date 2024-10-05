@@ -1,0 +1,8 @@
+# input_simple_no_obstacles.yaml
+x_start: 2
+y_start: 2
+x_goal: 98
+y_goal: 98
+x_space_size: 100
+y_space_size: 100
+list_obstacles: []

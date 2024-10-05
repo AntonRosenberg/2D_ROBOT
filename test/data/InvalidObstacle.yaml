@@ -1,0 +1,9 @@
+x_start: 5
+y_start: 5
+x_goal: 8
+y_goal: 8
+x_space_size: 10
+y_space_size: 10
+list_obstacles: [
+  [[2, 2], [2, 6], [4, 6], [4, 4], [-1, 4]]
+]
