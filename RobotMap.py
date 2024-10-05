@@ -1,25 +1,5 @@
-import math
 from shapely.geometry import LineString, Polygon
 
-'''
-def line(point1, point2):
-    space = [min(point1[0], point2[0]), max(point1[1], point2[1])]
-    if point1[0] != point2[0]:
-        k = (point2[1] - point1[1])/(point2[0] - point1[0])
-        m = point1[1] - k*point1[0]
-    else:
-        k = math.inf
-        m = math.inf
-
-    return k, m, space
-
-
-def intersects(point1, point2, polygon):
-    k, m, space = line([point1, point2])
-    segments = polygon.xy
-    for i in range(len(segments)):
-        ...
-'''
 
 class RobotMap:
     def __init__(self, start, goal, size, obstacles) -> None:

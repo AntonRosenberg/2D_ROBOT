@@ -22,13 +22,16 @@ def main():
     goal = (indata['x_goal'], indata['y_goal'])
     size = (indata['x_space_size'], indata['y_space_size']) 
 
+    # Create a map with start, goal, bounds/size and obstacles
     robotMap = RobotMap(start, goal, size, obstacles)
+    # Use the map to create a graph with where start goal and the verticies of the obsticles are
+    # the verticies in the graph.
     graph = Graph(robotMap)
+    # Run A-star algorithm to find shortest path
     path = a_star(graph.graph, start, goal)
-    print(path)
-    print(robotMap.is_collision_free((8.0, 12.0), (98, 98)))
+    if not path:
+        raise Exception("No valid path from start to goal found")
     path = np.array(path)
-    # path = np.array((0,0))
 
     # Visualize
     if args.plot:

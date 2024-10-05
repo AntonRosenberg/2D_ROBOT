@@ -1,7 +1,6 @@
 import pytest
 import numpy as np
 from main import main
-import yaml
 import sys
 from io import StringIO
 
@@ -16,8 +15,8 @@ test_cases = [
         "expected_path": [(2, 2), (10.0, 5.0), (20.0, 15.0), (60.0, 80.0), (80.0, 90.0), (98, 98)]  
     },
     {
-        "input": "test/data/NoPossiblePath.yaml",
-        "expected_path": []  
+        "input": "test/data/TwoObstacles.yaml",
+        "expected_path": [(2, 2), (8.0, 12.0), (60.0, 80.0), (80.0, 90.0), (98, 98)]  
     },
 ]
 
@@ -30,14 +29,13 @@ def test_main(monkeypatch, test_case):
     captured_output = StringIO()
     monkeypatch.setattr(sys, 'stdout', captured_output)
 
-    # Run the main function
+    # Run the program to calculate shoretest path
     main()
 
     # Get the printed output
     output = captured_output.getvalue()
     
     # Check if the path is printed correctly
-    # (You might need to parse the output if you are printing more than just the path)
     lines = output.splitlines()
     path_str = next((line for line in lines if line.startswith('[')), None)
     
