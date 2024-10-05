@@ -3,6 +3,15 @@ import heapq
 import numpy as np
 
 
+def reconstruct_path(came_from, current):
+    """Reconstruct path from start to goal."""
+    path = [current]
+    while current in came_from:
+        current = came_from[current]
+        path.append(current)
+    path.reverse()
+    return path
+
 def a_star_dist(graph, start, goal):
     def heuristic(p1, p2):
         return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5  # Euclidean distance
@@ -32,12 +41,10 @@ def a_star_dist(graph, start, goal):
 
 ###################################################################
 
-def heuristic(node, goal, acceleration):
+def heuristic(node, goal, acceleration, velocity):
     """Heuristic function: Time-based estimate (using distance and max acceleration)."""
     distance = np.sqrt((node[0] - goal[0])**2 + (node[1] - goal[1])**2)
-    final_velocity = math.sqrt(2 * acceleration * distance)
-    average_velocity = final_velocity / 2
-    return distance / average_velocity
+    return (np.sqrt(velocity**2+2*acceleration*distance)-velocity)/acceleration
 
 def a_star_with_turns(graph, start, goal, kinematics_model):
     """Perform A* search on the graph with time-based costs, including turns."""
@@ -62,21 +69,13 @@ def a_star_with_turns(graph, start, goal, kinematics_model):
             return reconstruct_path(came_from, goal)
         
         # Explore neighbors
-        for neighbor, time_cost in graph[current]:
+        for neighbor in graph[current]:
             tentative_g_score = g_score[current] + kinematics_model.time_to_traverse(current, neighbor, prev_node, kinematics_model.acceleration, max_deceleration)
             if tentative_g_score < g_score[neighbor]:
                 came_from[neighbor] = current
                 g_score[neighbor] = tentative_g_score
-                f_score[neighbor] = tentative_g_score + heuristic(neighbor, goal, kinematics_model.acceleration)
+                f_score[neighbor] = tentative_g_score + heuristic(neighbor, goal, kinematics_model.acceleration, kinematics_model.velocity)
                 heapq.heappush(open_set, (f_score[neighbor], neighbor, current))
     
     return None  # No path found
 
-def reconstruct_path(came_from, current):
-    """Reconstruct path from start to goal."""
-    path = [current]
-    while current in came_from:
-        current = came_from[current]
-        path.append(current)
-    path.reverse()
-    return path
