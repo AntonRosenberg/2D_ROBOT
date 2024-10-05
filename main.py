@@ -5,9 +5,9 @@ import matplotlib.patches as patch
 import numpy as np
 import yaml
 import argparse
-from RobotMap import*
-from graph import*
-from AStar import a_star
+from RobotMap import RobotMap
+from graph import Graph
+from AStar import a_star_dist
 
 def main():
     parser = argparse.ArgumentParser(prog='shortestPathFinding', description='Find the Shortest Path that avoids obstacles')
@@ -28,7 +28,7 @@ def main():
     # the verticies in the graph.
     graph = Graph(robotMap)
     # Run A-star algorithm to find shortest path
-    path = a_star(graph.graph, start, goal)
+    path = a_star_dist(graph.graph, start, goal)
     if not path:
         raise Exception("No valid path from start to goal found")
     print(path)
