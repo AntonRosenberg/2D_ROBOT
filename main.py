@@ -31,6 +31,7 @@ def main():
     path = a_star(graph.graph, start, goal)
     if not path:
         raise Exception("No valid path from start to goal found")
+    print(path)
     path = np.array(path)
 
     # Visualize
