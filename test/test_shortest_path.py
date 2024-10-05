@@ -5,7 +5,7 @@ import sys
 from io import StringIO
 
 # Test cases and their expected outputs
-test_cases_shortest_path = [
+test_cases_shortest_distance = [
     {
         "input": "test/data/NoObstacles.yaml",
         "expected_path": [(2, 2), (98, 98)]  
@@ -24,8 +24,8 @@ test_cases_shortest_path = [
     },
 ]
 
-@pytest.mark.parametrize("test_case", test_cases_shortest_path)
-def test_shortest_path(monkeypatch, test_case):
+@pytest.mark.parametrize("test_case", test_cases_shortest_distance)
+def test_shortest_distance(monkeypatch, test_case):
     # Mock command line arguments
     monkeypatch.setattr(sys, 'argv', ['main.py', test_case['input']])
     
@@ -65,7 +65,7 @@ test_cases_shortest_time = [
     },
     {
         "input": "test/data/TwoObstacles.yaml",
-        "expected_path": [(2, 2), (10.0, 5.0), (70.0, 40.0), (98, 98)]  
+        "expected_path": [(2, 2), (10.0, 5.0), (70.0, 40.0), (98, 98)]
     },
     {
         "input": "test/data/OverlappingObstacles.yaml",

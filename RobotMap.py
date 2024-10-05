@@ -25,6 +25,8 @@ class RobotMap:
         collision = True
         line = LineString([point1, point2])
         for polygon in self.obstacles:
+            # Check if line intersects any obstacle and if it does check that it doesn't go within
+            # the obstacles borders.
             if line.intersects(polygon) and not (line.touches(polygon) and not line.within(polygon)):
                 return False
         return collision
