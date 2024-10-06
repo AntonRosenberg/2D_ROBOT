@@ -6,7 +6,7 @@ import numpy as np
 import yaml
 import argparse
 from src.RobotMap import RobotMap
-from src.graph import Graph
+from src.Graph import Graph
 from src.KinematicModel import KinematicsModel
 from src.AStar import a_star_dist, a_star_kinematic
 
