@@ -89,6 +89,8 @@ Since the model has no max velocity long straight paths might get better scores 
     ```bash
     2 2
     8 12
+    60 80
+    80 90
     98 98
 ## Project Structure Overview
     |── .github
