@@ -18,3 +18,19 @@ def test_no_path(monkeypatch):
     # Run the main function
     with pytest.raises(Exception, match="No valid path from start to goal found"):
         main()
+
+def test_start_outide_bounds(monkeypatch):
+    # Mock command line arguments
+    monkeypatch.setattr(sys, 'argv', ['main.py', 'test/data/InvalidStart.yaml'])
+
+    # Run the main function
+    with pytest.raises(Exception, match="No valid path from start to goal found"):
+        main()
+
+def test_goal_outside_bounds(monkeypatch):
+    # Mock command line arguments
+    monkeypatch.setattr(sys, 'argv', ['main.py', 'test/data/InvalidGoal.yaml'])
+
+    # Run the main function
+    with pytest.raises(Exception, match="No valid path from start to goal found"):
+        main()
