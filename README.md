@@ -1,6 +1,7 @@
 # 2D_ROBOT
 
-The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space with obstacles. The algorithms calculate either the shortest distance or the shortest time path from a starting point to a goal while avoiding obstacles.
+The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space with obstacles. The algorithms calculate either the shortest distance or the shortest time path from a starting point to a goal while avoiding obstacles. It is assumed for both cases that the robot can touch the obstacles but not go inside of them.
+Similarly the robot can touch the boundaries but not go outside of them. For example if an obstacle touches the boundar
 
 ## Features
 
@@ -14,21 +15,29 @@ The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space 
 - **Plotting**:
   - Use the `--plot` flag to visualize the path and obstacles.
 
+## Prerequisites
+
+-   You need to have pip and python3.xx-venv installed
+
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd 2D_ROBOT
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd 2D_ROBOT
 
-2. python3 -m venv myenv
+2.  Start an virtual environment:  
+    ```bash
+    python3 -m venv myenv
+    source myenv/bin/activate
 
-3. source myenv/bin/activate
+4.  Install required third party libraries: 
+    ```bash
+    pip install -r requirements.txt
 
-4. pip install -r requirements.txt
-
-- **To make sure the installation is working run the tests**
-- pytest
+5.  Make sure it's installed correctly by running the tests
+    ```bash
+    pytest
 
 ## Usage
 
@@ -50,7 +59,3 @@ The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space 
         [[5,5], [10,5], [8,12]],
         [[50,60], [70,40], [80,90], [60,80]]
     ]
-
-- **The tests can be run with command**
-- pytest
-
