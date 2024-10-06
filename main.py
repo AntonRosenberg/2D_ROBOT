@@ -35,18 +35,20 @@ def main():
     elif args.type == 'time':
         kinematics_model = KinematicsModel(1)
         path = a_star_kinematic(graph.graph, start, goal, kinematics_model)
+    else:
+        raise Exception(f'Invalid type {args.type}, options are distance, time')
 
     if not path:
-        raise Exception("No valid path from start to goal found")
-    print(path)
-    path = np.array(path)
+        raise Exception('No valid path from start to goal found')
+    else:
+        path = np.array(path)
+        np.savetxt(f'{args.output}', path, fmt='%d')
 
     # Visualize
     if args.plot:
         fig, ax = plt.subplots()
         for obstacle in obstacles:
             p = patch.Polygon(np.array(obstacle))
-            print(p)
             ax.add_patch(p)
         if len(path) != 0:
             ax.plot(path[:,0], path[:,1], 'r.-')

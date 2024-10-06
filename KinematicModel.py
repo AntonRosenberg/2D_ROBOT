@@ -41,9 +41,8 @@ class KinematicsModel:
         mag_v2 = np.sqrt(v2[0]**2 + v2[1]**2)
 
         cos_theta = dot_product / (mag_v1 * mag_v2)
-        #angle = np.arccos(cos_theta)
 
         # Apply a penalty based on the sharpness of the turn
-        deceleration_factor = np.clip(cos_theta, 0.5, 1.0)
+        deceleration_factor = np.clip(cos_theta, 0, 1.0)
 
         return deceleration_factor

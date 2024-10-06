@@ -1,11 +1,17 @@
 # 2D_ROBOT
 
-The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space with obstacles. The algorithms calculate either the shortest distance or the shortest time path from a starting point to a goal while avoiding obstacles. It is assumed for both cases that the robot can touch the obstacles but not go inside of them.
-Similarly the robot can touch the boundaries but not go outside of them. For example if an obstacle touches the boundar
+The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space with obstacles. The algorithms calculate either the shortest distance or the shortest time path from a starting point to a goal while avoiding obstacles. It is assumed that the robot can touch the obstacles but not go inside of them. The robot has to be within the boundaries at all times i.e. if a boundary is at x=100 the robots x position x_r has to be < 100.
+
+If there is no possible solution or if any obstacle intersects with itself the program will rasie an exception.
+
+When calculating the shortest time the program makes the following assumptions:
+- The robot has a constant acceleration which can be applied in any direction
+- The robot has no set maximum velocity
+- Turning is penalised through a deacceleration factor which depends on steepnes of the curve (penalty is a factor in [0, 1] to the final velocity of the segment)
 
 ## Features
 
-- **Two A* Algorithms**:
+- **Two A-star Algorithms**:
   - Shortest Distance A*
   - Shortest Time A*
 
@@ -23,7 +29,7 @@ Similarly the robot can touch the boundaries but not go outside of them. For exa
 
 1.  Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/AntonRosenberg/2D_ROBOT.git
     cd 2D_ROBOT
 
 2.  Start an virtual environment:  
@@ -41,14 +47,19 @@ Similarly the robot can touch the boundaries but not go outside of them. For exa
 
 ## Usage
 
-- **Run the program using this command**
-- python main.py <input_yaml_file>  --plot -type <distance|time> 
+- **Run the program**
+    ```bash
+    python main.py <input_yaml_file>  --plot -type <distance|time> 
 
-- <input_yaml_file>: Path to the YAML file containing the configuration for the pathfinding.
-- --plot: (Optional) Flag to generate a plot of the path and obstacles.
-- -type <distance|time>: (default: distance) Specify whether to use the shortest distance or shortest time A* algorithm.
+- **<input_yaml_file>** 
+    - Path to the YAML file containing the configuration for the pathfinding.
+- **--plot** 
+    - (Optional) Flag to generate a plot of the path and obstacles.
+- **-type <distance|time>**
+    - (default: distance) Specify whether to use the shortest distance or shortest time A-star algorithm.
 
-- Here is an example of how the YAML input file should be structured:
+- **Here is an example of how the YAML input file should be structured**
+    ```bash
     x_start: 2 
     y_start: 2
     x_goal: 98
@@ -59,3 +70,9 @@ Similarly the robot can touch the boundaries but not go outside of them. For exa
         [[5,5], [10,5], [8,12]],
         [[50,60], [70,40], [80,90], [60,80]]
     ]
+
+## Testing and Continuous Integration
+
+This project uses **pytest** for running unit tests and **GitHub Actions** for continuous integration.
+
+[![Python Tests](https://github.com/AntonRosenberg/2D_ROBOT/blob/main/.github/workflows/ci.yml)](https://github.com/AntonRosenberg/2D_ROBOT/actions)
