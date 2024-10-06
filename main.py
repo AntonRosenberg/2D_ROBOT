@@ -15,7 +15,7 @@ def main():
     parser.add_argument('inputyaml')
     parser.add_argument('output', nargs='?', default='solution.txt')
     parser.add_argument('--plot', action='store_true')
-    parser.add_argument('-type', nargs='?', default='shortest_path')
+    parser.add_argument('-type', nargs='?', default='distance')
     args = parser.parse_args()
     # Load input
     indata = yaml.load(open(args.inputyaml), yaml.Loader)
@@ -30,9 +30,9 @@ def main():
     # the verticies in the graph.
     graph = Graph(robotMap)
     # Run A-star algorithm to find shortest path
-    if args.type == 'shortest_path':
+    if args.type == 'distance':
         path = a_star_dist(graph.graph, start, goal)
-    elif args.type == 'kinematic':
+    elif args.type == 'time':
         kinematics_model = KinematicsModel(1)
         path = a_star_kinematic(graph.graph, start, goal, kinematics_model)
 

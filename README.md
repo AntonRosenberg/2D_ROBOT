@@ -21,10 +21,23 @@ The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space 
    git clone <repository-url>
    cd 2D_ROBOT
 
-2. pip install -r requirements.txt
+2. python3 -m venv myenv
+
+3. source myenv/bin/activate
+
+4. pip install -r requirements.txt
+
+- **To make sure the installation is working run the tests**
+- pytest
 
 ## Usage
-- python main.py <input_yaml_file> --plot -type <distance|time>
+
+- **Run the program using this command**
+- python main.py <input_yaml_file>  --plot -type <distance|time> 
+
+- <input_yaml_file>: Path to the YAML file containing the configuration for the pathfinding.
+- --plot: (Optional) Flag to generate a plot of the path and obstacles.
+- -type <distance|time>: (default: distance) Specify whether to use the shortest distance or shortest time A* algorithm.
 
 - Here is an example of how the YAML input file should be structured:
     x_start: 2 
@@ -38,5 +51,6 @@ The 2D_ROBOT project implements two A* algorithms for pathfinding in a 2D space 
         [[50,60], [70,40], [80,90], [60,80]]
     ]
 
-
+- **The tests can be run with command**
+- pytest
 

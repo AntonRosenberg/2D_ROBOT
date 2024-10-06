@@ -76,7 +76,7 @@ test_cases_shortest_time = [
 @pytest.mark.parametrize("test_case", test_cases_shortest_time)
 def test_shortest_time(monkeypatch, test_case):
     # Mock command line arguments
-    monkeypatch.setattr(sys, 'argv', ['main.py', test_case['input'], "-type", "kinematic"])
+    monkeypatch.setattr(sys, 'argv', ['main.py', test_case['input'], "-type", "time"])
     
     # Capture the output
     captured_output = StringIO()
