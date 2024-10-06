@@ -28,7 +28,7 @@ Since the model has no max velocity long straight paths might get better scores 
   - Use the `--plot` flag to visualize the path and obstacles.
 
 - **Output**:
-    - Outputs the optimal path in an .txt (it's set as solution.txt if not specified)
+    - Outputs the optimal path in an .txt (it's set as solution.txt if not specified, see Usage section)
 
 ## Prerequisites
 
@@ -111,6 +111,6 @@ Since the model has no max velocity long straight paths might get better scores 
 
 ## Testing and Continuous Integration
 
-This project uses **pytest** for running unit tests and **GitHub Actions** for continuous integration.
+This project uses **pytest** for running unit tests and **GitHub Actions** for continuous integration. The tests run everytime code is pushed or a pull request is made. 
 
 [![Python Tests](https://github.com/AntonRosenberg/2D_ROBOT/blob/main/.github/workflows/ci.yml)](https://github.com/AntonRosenberg/2D_ROBOT/actions)
