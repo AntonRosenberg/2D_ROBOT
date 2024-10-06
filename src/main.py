@@ -5,10 +5,10 @@ import matplotlib.patches as patch
 import numpy as np
 import yaml
 import argparse
-from RobotMap import RobotMap
-from graph import Graph
-from KinematicModel import KinematicsModel
-from AStar import a_star_dist, a_star_kinematic
+from src.RobotMap import RobotMap
+from src.graph import Graph
+from src.KinematicModel import KinematicsModel
+from src.AStar import a_star_dist, a_star_kinematic
 
 def main():
     parser = argparse.ArgumentParser(prog='shortestPathFinding', description='Find the Shortest Path that avoids obstacles')

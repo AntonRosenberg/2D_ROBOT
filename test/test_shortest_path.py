@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from main import main
+from src.main import main
 import sys
 import os
 
