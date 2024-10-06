@@ -42,7 +42,7 @@ def a_star_dist(graph, start, goal):
 
 ###################################################################
 
-def a_star_kinematic(graph, start, goal, kinematics_model):
+def a_star_time(graph, start, goal, kinematics_model):
     """Perform A* search on the graph with time as costs, including penalty for turns."""
     
     def heuristic(node, goal, acceleration, velocity):

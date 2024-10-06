@@ -5,10 +5,10 @@ import matplotlib.patches as patch
 import numpy as np
 import yaml
 import argparse
-from src.RobotMap import RobotMap
-from src.Graph import Graph
-from src.KinematicModel import KinematicsModel
-from src.AStar import a_star_dist, a_star_kinematic
+from RobotMap import RobotMap
+from Graph import Graph
+from KinematicModel import KinematicsModel
+from AStar import a_star_dist, a_star_time
 
 def main():
     parser = argparse.ArgumentParser(prog='shortestPathFinding', description='Find the Shortest Path that avoids obstacles')
@@ -34,7 +34,7 @@ def main():
         path = a_star_dist(graph.graph, start, goal)
     elif args.type == 'time':
         kinematics_model = KinematicsModel(1)
-        path = a_star_kinematic(graph.graph, start, goal, kinematics_model)
+        path = a_star_time(graph.graph, start, goal, kinematics_model)
     else:
         raise Exception(f'Invalid type {args.type}, options are distance, time')
 
