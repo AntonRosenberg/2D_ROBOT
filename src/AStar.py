@@ -20,11 +20,16 @@ def a_star_dist(graph, start, goal):
 
     open_set = []
     heapq.heappush(open_set, (0, tuple(start)))
+
+    # Dictionaries to track the optimal path
     came_from = {}
     g_score = {tuple(start): 0}
+
+    # Estimated distance to goal
     f_score = {tuple(start): heuristic(start, goal)}
     
     while open_set:
+        # Get the node with the lowest f_score
         current = heapq.heappop(open_set)[1]
         
         if current == tuple(goal):
@@ -38,7 +43,8 @@ def a_star_dist(graph, start, goal):
                 f_score[neighbor] = tentative_g_score + heuristic(neighbor, goal)
                 heapq.heappush(open_set, (f_score[neighbor], neighbor))
     
-    return []  # Return empty path if no path found
+    # No path found
+    return []
 
 
 ###################################################################
@@ -51,7 +57,6 @@ def a_star_time(graph, start, goal, kinematics_model):
         distance = np.sqrt((node[0] - goal[0])**2 + (node[1] - goal[1])**2)
         return (np.sqrt(velocity**2 + 2 * acceleration * distance) - velocity) / acceleration
 
-    # Priority queue for A* search (f_score, current_node, previous_node, velocity)
     open_set = []
     heapq.heappush(open_set, (0, start, None, kinematics_model.velocity))
     
@@ -64,7 +69,7 @@ def a_star_time(graph, start, goal, kinematics_model):
     v_score = {node: float('inf') for node in graph}
     v_score[start] = kinematics_model.velocity
     
-    # Estimated time to goal (f_score)
+    # Estimated time to goal
     f_score = {node: float('inf') for node in graph}
     f_score[start] = heuristic(start, goal, kinematics_model.acceleration, kinematics_model.velocity)
     
