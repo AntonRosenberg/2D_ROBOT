@@ -41,26 +41,22 @@ Since the model has no max velocity long straight paths might get better scores 
     ```bash
     git clone https://github.com/AntonRosenberg/2D_ROBOT.git
     cd 2D_ROBOT
-
 2.  Start an virtual environment:  
     ```bash
     python3 -m venv myenv
     source myenv/bin/activate
-
 4.  Install required third party libraries: 
     ```bash
     pip install -r requirements.txt
-
 5.  Make sure it's installed correctly by running the tests
     ```bash
     pytest
-
 ## Usage
 
 - **Run the program**
     ```bash
-    python src/main.py <input_yaml_file>  <output.txt> --plot -type <distance|time> 
-
+    python src/main.py <input_yaml_file>  <output.txt> --plot -type distance 
+    python src/main.py <input_yaml_file>  <output.txt> --plot -type time 
 - **<input_yaml_file>** 
     - Path to the YAML file containing the configuration for the pathfinding.
 
@@ -84,7 +80,6 @@ Since the model has no max velocity long straight paths might get better scores 
         [[5,5], [10,5], [8,12]],
         [[50,60], [70,40], [80,90], [60,80]]
     ]
-
 - **Example output**
     ```bash
     2 2
@@ -92,6 +87,7 @@ Since the model has no max velocity long straight paths might get better scores 
     60 80
     80 90
     98 98
+
 ## Project Structure Overview
     |── .github
     |── src/
