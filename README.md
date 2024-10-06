@@ -27,9 +27,13 @@ Since the model has no max velocity long straight paths might get better scores 
 - **Plotting**:
   - Use the `--plot` flag to visualize the path and obstacles.
 
+- **Output**:
+    - Outputs the optimal path in an .txt (it's set as solution.txt if not specified)
+
 ## Prerequisites
 
--   You need to have pip and python3.xx-venv installed
+- **pip** 
+- **python3.10-venv**
 
 ## Installation
 
@@ -86,6 +90,24 @@ Since the model has no max velocity long straight paths might get better scores 
     2 2
     8 12
     98 98
+## Project Structure Overview
+    |── .github
+    |── src/
+    │   ├── __init__.py
+    |   ├── AStar.py
+    |   ├── Graph.py
+    |   ├── KinematicsModel.py
+    │   ├── main.py
+    │   └── RobotMap.py
+    ├── test/
+    │   ├── data/
+    │       └── Test input data
+    │   ├── __init__.py
+    │   ├── test_invalid_inputs.py
+    │   └── test_shortest_path.py
+    ├── .gitignore
+    ├── pytest.ini
+    └── requirements.txt
 
 ## Testing and Continuous Integration
 
