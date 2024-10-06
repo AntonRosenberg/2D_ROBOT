@@ -16,7 +16,7 @@ class RobotMap:
 
     def is_inbounds(self, point):
         x, y = point
-        return 0 <= x <= self.size[0] and 0 <= y <= self.size[1]
+        return 0 < x < self.size[0] and 0 < y < self.size[1]
     
     def is_collision_free(self, point1, point2):
         """Check if the line from point1 to point2 intersects any obstacle and stays within bounds."""
